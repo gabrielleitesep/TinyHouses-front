@@ -43,8 +43,11 @@ export default function Cadastro() {
                 </form>
             </div>
             <div className="containerCadastro">
+                <Link to="/login">
+                    <h1>Já sou cliente</h1>
+                </Link>
                 <Link to="/">
-                    <h1>Já tem uma conta? Entre agora!</h1>
+                    <h1>Quero continuar comprando</h1>
                 </Link>
             </div>
         </div>

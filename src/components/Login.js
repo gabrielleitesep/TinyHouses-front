@@ -51,7 +51,10 @@ export default function Login() {
             </div>
             <div className="containerCadastro">
                 <Link to="/cadastro">
-                    <h1>Primeira vez? Cadastre-se!</h1>
+                    <h1>Criar conta</h1>
+                </Link>
+                <Link to="/">
+                    <h1>Quero continuar comprando</h1>
                 </Link>
             </div>
         </div>
