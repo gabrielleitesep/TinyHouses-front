@@ -20,6 +20,7 @@ const Container = styled.div`
     align-items: center;
 `
 const BoxProducts = styled.div`
+    margin-top: 100px;
     width: 90%;
     height: auto;
     min-height: 100vh;

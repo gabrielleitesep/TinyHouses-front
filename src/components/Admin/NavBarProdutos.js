@@ -45,6 +45,7 @@ const BoxNavBar = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: fixed;
 h1 {
     font-family: 'Roboto', sans-serif;
     font-size: 30px;

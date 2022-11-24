@@ -40,7 +40,12 @@ export default function ListaProdutos() {
 
 const BoxList = styled.div`
     width: 100vw;
+    margin-bottom: 33px;
     display: flex;
     flex-direction: column;
     align-items: center;
+img {
+    width: 300px;
+    height: auto;
+}
 `
