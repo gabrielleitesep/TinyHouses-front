@@ -1,22 +1,37 @@
 import styled from "styled-components";
+import axios from "axios";
 import { Link } from "react-router-dom";
 
-export default function NavBar() {
+export default function NavBarProdutos() {
+
+    function logout() {
+        const config = {
+            // headers: { Authorization: `Bearer ${token}` }
+        };
+
+        const promise = axios.delete("http://localhost:5000/sign-out", config)
+
+        promise.then((res) => {
+            alert("Até breve!");
+        });
+        promise.catch((err) => {
+            console.log(err.response.data)
+        });
+    };
+
     return (
         <Container>
             <BoxNavBar>
                 <h1>TinyHouse</h1>
                 <BoxIcons>
-                    <Link to={`/login`}>
-                        <ion-icon name="person-outline"></ion-icon>
+                    <Link to={"/"}>
+                        <ion-icon name="home-outline"></ion-icon>
                     </Link>
-                    <Link to={`/carrinho`}>
-                        <ion-icon name="cart-outline"></ion-icon>
-                    </Link>
+                    <ion-icon name="log-out-outline" onClick={logout}></ion-icon>
                 </BoxIcons>
             </BoxNavBar>
         </Container>
-    );
+    )
 };
 
 const Container = styled.div`
