@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import NavBar from "./NavBar";
+import NavBar from "../components/NavBar";
 
 export default function Cadastro() {
 
@@ -42,12 +42,12 @@ export default function Cadastro() {
             <div className="containerCadastrar">
                 <div className="containerInput">
                     <form onSubmit={cadastrar}>
-                        <input placeholder="Nome" type="text" onChange={e => body.name = e.target.value} required></input>
-                        <input placeholder="E-mail" type="email" onChange={e => body.email = e.target.value} required></input>
-                        <input placeholder="CPF" type="number" min="11" onChange={e => body.cpf = e.target.value} required></input>
-                        <input placeholder="Endereço completo" type="text" onChange={e => body.address = e.target.value} required></input>
-                        <input placeholder="Senha" type="password" onChange={e => body.password = e.target.value} required></input>
-                        <input placeholder="Confirmação de senha" type="password" onChange={e => body.confirmPassword = e.target.value} required></input>
+                        <input placeholder="Nome" type="text" min={2} max={50} onChange={e => body.name = e.target.value} required></input>
+                        <input placeholder="E-mail" type="email" min={6} max={50} onChange={e => body.email = e.target.value} required></input>
+                        <input placeholder="CPF" type="number" onChange={e => body.cpf = e.target.value} required></input>
+                        <input placeholder="Endereço completo" type="text" min={20} max={100} onChange={e => body.address = e.target.value} required></input>
+                        <input placeholder="Senha" type="password" min={4} max={8} onChange={e => body.password = e.target.value} required></input>
+                        <input placeholder="Confirmação de senha" type="password" min={4} max={8} onChange={e => body.confirmPassword = e.target.value} required></input>
                         <button type="submit" >Cadastrar</button>
                     </form>
                     <Link to="/">

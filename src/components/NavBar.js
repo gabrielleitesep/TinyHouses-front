@@ -1,20 +1,42 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import UseContext from "../contexts/useContext";
+import axios from "axios";
 
 export default function NavBar() {
+
+    const { token } = useContext(UseContext);
+    const navigate = useNavigate();
+
+    function logout() {
+        const config = {
+            headers: { Authorization: `Bearer ${token}` }
+        };
+
+        const promise = axios.delete("http://localhost:5000/logout", config);
+
+        promise.then((res) => {
+            navigate("/");
+            alert("Até breve!");
+        });    
+        promise.catch((err) => console.log(err.response.data));
+    };
+
     return (
         <Container>
             <BoxNavBar>
                 <Link to={`/`}>
                     <h1>TinyHouses</h1>
                 </Link>
-                <BoxIcons>
-                    <Link to={`/login`}>
-                        <ion-icon name="person-outline"></ion-icon>
-                    </Link>
+                <BoxIcons>                
                     <Link to={`/carrinho`}>
                         <ion-icon name="cart-outline"></ion-icon>
                     </Link>
+                    <Link to={`/login`}>
+                        <ion-icon name="person-outline"></ion-icon>
+                    </Link>
+                    <ion-icon name="log-out-outline" onClick={logout}></ion-icon>
                 </BoxIcons>
             </BoxNavBar>
         </Container>

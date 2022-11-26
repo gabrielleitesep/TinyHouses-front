@@ -1,6 +1,6 @@
 import axios from "axios";
 import styled from "styled-components";
-import NavBarProdutos from "./NavBarProdutos";
+import NavBar from "../components/NavBar";
 import ListaProdutos from "./ListaProdutos";
 
 export default function CadastroProdutos() {
@@ -32,7 +32,7 @@ export default function CadastroProdutos() {
 
     return (
         <Container>
-            <NavBarProdutos />
+            <NavBar />
             <form onSubmit={cadastrar}>
                 <input placeholder="Título" type="text" onChange={e => body.title = e.target.value} required></input>
                 <input placeholder="Imagem" type="url" onChange={e => body.image = e.target.value} required></input>

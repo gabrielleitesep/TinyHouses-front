@@ -1,18 +1,23 @@
 import styled from "styled-components";
 
-export default function BoxProduct() {
+export default function BoxProduct({title, image, description, maker, guarantee, area, price}) {
+    
+    function addToCart() {
+
+    };
+
     return (
         <Product>
-            <h1>Casa pré-fabricada de madeira Eco Lodge 18,14 m2</h1>
-            <img src={"https://st3.idealista.pt/news/arquivos/styles/fullwidth_xl/public/2022-01/eco_lodge.png?VersionId=WS0sBiDHZwkpVTEQhdw_LksF0KZaxr0E&itok=rGDtbaYK"} alt={"casa"} />
-            <p>Esta casa pré-fabricada é construída com madeira de pinho escandinavo e possui duas janelas oscilobatentes com vidros duplos, que proporcionam uma excelente iluminação. Além disso, tem um bom isolamento térmico de lã de vidro nas paredes e no telhado.</p>
-            <p>Fabricante: Leroy Merlin</p>
-            <p>Garantia: 3 anos</p>
-            <p>Área: 18,14 m2</p>
-            <p>R$60.000,00</p>
-            <button>Adicionar ao carrinho</button>
+            <h1>{title}</h1>
+            <img src={image} alt={"casa"} />
+            <p>{description}</p>
+            <p>Fabricante: {maker}</p>
+            <p>Garantia: {guarantee}</p>
+            <p>Área: {area}</p>
+            <p>R${parseInt(price).toLocaleString("pt-BR")},00</p>
+            <button onClick={addToCart}>Adicionar ao carrinho</button>
         </Product>
-    )
+    );
 };
 
 const Product = styled.div`

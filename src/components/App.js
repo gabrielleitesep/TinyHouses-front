@@ -1,22 +1,24 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
-import UserContext from "../contexts/useContext";
-import LoginAdmin from "./Admin/LoginAdmin";
-import CadastroProdutos from "./Admin/CadastroProdutos";
-import Login from "./Login";
-import Cadastro from "./Cadastro";
-import Catalogo from "./Catalogo/Catalogo";
-import Carrinho from "./Carrinho";
-import Finalizar from "./Finalizar";
+import UseContext from "../contexts/useContext";
+import LoginAdmin from "../adminPages/LoginAdmin";
+import CadastroProdutos from "../adminPages/CadastroProdutos";
+import Login from "../userPages/Login";
+import Cadastro from "../userPages/Cadastro";
+import Catalogo from "../userPages/catalogo/Catalogo";
+import Carrinho from "../userPages/Carrinho";
+import Finalizar from "../userPages/Finalizar";
 
 export default function App() {
 
     const [dados, setDados] = useState("");
+    const [token, setToken] = useState(null);
+    const [productsList, setProductsList] = useState(null);
 
     return (
         <>
             <BrowserRouter>
-                <UserContext.Provider value={{ dados, setDados }}>
+                <UseContext.Provider value={{ dados, setDados, token, setToken, productsList, setProductsList }}>
                     <Routes>
                         <Route path='/' element={<Catalogo />} />
                         <Route path='/login' element={<Login />} />
@@ -26,7 +28,7 @@ export default function App() {
                         <Route path='/carrinho' element={<Carrinho />} />
                         <Route path='/finalizar' element={<Finalizar />} />
                     </Routes>
-                </UserContext.Provider>
+                </UseContext.Provider>
             </BrowserRouter>
         </>
     );
