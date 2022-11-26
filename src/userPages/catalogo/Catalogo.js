@@ -56,4 +56,5 @@ const BoxProducts = styled.div`
     width: 90%;
     height: auto;
     min-height: 100vh;
+    margin-bottom: 100px;
 `

@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import UseContext from "../contexts/useContext";
-import LoginAdmin from "../adminPages/LoginAdmin";
 import CadastroProdutos from "../adminPages/CadastroProdutos";
 import Login from "../userPages/Login";
 import Cadastro from "../userPages/Cadastro";
@@ -22,7 +21,6 @@ export default function App() {
                     <Routes>
                         <Route path='/' element={<Catalogo />} />
                         <Route path='/login' element={<Login />} />
-                        <Route path='/login-admin' element={<LoginAdmin />} />
                         <Route path='/produtos-admin' element={<CadastroProdutos />} />
                         <Route path='/cadastro' element={<Cadastro />} />
                         <Route path='/carrinho' element={<Carrinho />} />

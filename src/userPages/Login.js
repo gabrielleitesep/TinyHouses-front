@@ -50,9 +50,6 @@ export default function Login() {
                     <Link to="/cadastro">
                         <h1>Criar conta</h1>
                     </Link>
-                    <Link to="/login-admin">
-                        <h1>Logar como administrador</h1>
-                    </Link>
                 </div>
             </div>
         </>

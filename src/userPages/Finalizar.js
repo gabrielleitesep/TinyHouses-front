@@ -8,12 +8,16 @@ export default function Finalizar() {
             <TextBox>
                 <h1>Obrigada por comprar com a gente!</h1>
                 <h2>Dados da compra</h2>
-                <p>Casa pré-fabricada de madeira Eco Lodge 18,14 m2</p>
-                <p>1 unidade</p>
-                <span>R$60.000,00</span>                
-                <p>Casa pré-fabricada de madeira Eco Lodge 18,14 m2</p>
-                <p>1 unidade</p>
-                <span>R$60.000,00</span>   
+                <PurchasedItem>
+                    <p>Casa pré-fabricada de madeira Eco Lodge 18,14 m2</p>
+                    <p>1 unidade</p>
+                    <span>R$60.000,00</span>
+                </PurchasedItem>
+                <PurchasedItem>
+                    <p>Casa pré-fabricada de madeira Eco Lodge 18,14 m2</p>
+                    <p>1 unidade</p>
+                    <span>R$60.000,00</span>
+                </PurchasedItem>
                 <h2>Total: R$120.000,00</h2>
                 <h2>Dados do comprador</h2>
                 <p>Nome: Dayane Piccoli</p>
@@ -60,4 +64,10 @@ p{
     font-size: 17px;
     margin: 10px 0;
 }
+`
+const PurchasedItem = styled.div`
+    border: 1px solid #FFD700;
+    border-radius: 7px;
+    margin: 5px auto;
+    padding: 10px;
 `
