@@ -24,7 +24,7 @@ const Product = styled.div`
     border: 1px solid #FFD700;
     border-radius: 7px;
     padding: 15px;
-    margin-top: 15px;
+    margin-top: 25px;
 h1 {
     color: black;
     font-weight: 700;

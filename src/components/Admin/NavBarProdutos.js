@@ -22,7 +22,9 @@ export default function NavBarProdutos() {
     return (
         <Container>
             <BoxNavBar>
-                <h1>TinyHouse</h1>
+                <Link to={"/"}>
+                    <h1>TinyHouses</h1>
+                </Link>
                 <BoxIcons>
                     <Link to={"/"}>
                         <ion-icon name="home-outline"></ion-icon>
@@ -56,7 +58,7 @@ const BoxIcons = styled.div`
     margin: 20px;
 ion-icon {
     color: brown;
-    font-size: 30px;
+    font-size: 35px;
     margin: 5px;
 }
 `

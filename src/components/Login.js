@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import imgLogo from "../assets/House.png";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useContext } from "react";
 import UserContext from "../contexts/useContext";
+import NavBar from "./NavBar";
 
 export default function Login() {
 
@@ -36,28 +36,28 @@ export default function Login() {
     };
 
     return (
-        <div className="containerLogin">
-            <div className="containerLogo">
-                <img src={imgLogo} alt="logo do site" />
+        <>
+            <NavBar />
+            <div className="containerLogin">
+                <div className="containerInput">
+                    <form onSubmit={fazerLogin}>
+                        <input placeholder="E-mail" type="email" value={email} onChange={e => setEmail(e.target.value)} required></input>
+                        <input placeholder="Senha" type="password" value={password} onChange={e => setPassword(e.target.value)} required></input>
+                        <button type="submit" >Entrar</button>
+                    </form>
+                    <Link to="/">
+                        <button>Continuar comprando</button>
+                    </Link>
+                </div>
+                <div className="containerCadastro">
+                    <Link to="/cadastro">
+                        <h1>Criar conta</h1>
+                    </Link>
+                    <Link to="/login-admin">
+                        <h1>Logar como administrador</h1>
+                    </Link>
+                </div>
             </div>
-            <div className="containerInput">
-                <form onSubmit={fazerLogin}>
-                    <input placeholder="E-mail" type="email" value={email} onChange={e => setEmail(e.target.value)} required></input>
-                    <input placeholder="Senha" type="password" value={password} onChange={e => setPassword(e.target.value)} required></input>
-                    <button type="submit" >Entrar</button>
-                </form>
-                <Link to="/">
-                    <button>Continuar comprando</button>
-                </Link>
-            </div>
-            <div className="containerCadastro">
-                <Link to="/cadastro">
-                    <h1>Criar conta</h1>
-                </Link>
-                <Link to="/login-admin">
-                    <h1>Logar como administrador</h1>
-                </Link>
-            </div>
-        </div>
+        </>
     );
 };

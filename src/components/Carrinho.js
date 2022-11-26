@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import NavBar from "./NavBar";
 
 export default function Catalogo() {
 
@@ -13,6 +14,7 @@ export default function Catalogo() {
 
     return (
         <Container>
+            <NavBar/>
             <BoxProducts>
                 <Product>
                     <h1>Casa pré-fabricada de madeira Eco Lodge 18,14 m2</h1>
@@ -23,7 +25,7 @@ export default function Catalogo() {
                 </BoxIcons>
                 </Product>
                 <Link to={`/`}>
-                    <Button>Continuar compando</Button>
+                    <Button>Continuar comprando</Button>
                 </Link>
                 <Link to={`/finalizar`}>
                     <Button>Finalizar compra</Button>
@@ -40,7 +42,7 @@ const Container = styled.div`
     align-items: center;
 `
 const BoxProducts = styled.div`
-    margin-top: 20px;
+    margin-top: 120px;
     width: 90%;
     height: auto;
     min-height: 100vh;

@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
-import imgLogo from "../../assets/House.png";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useContext } from "react";
 import UserContext from "../../contexts/useContext";
+import NavBar from "../NavBar";
 
-export default function LoginAdmin () {
+export default function LoginAdmin() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -30,26 +30,26 @@ export default function LoginAdmin () {
         });
 
         promise.catch(err => {
-            console.log(err.response.data.message)
-            alert("Usuário ou senha de administrador inválidos")
+            console.log(err.response.data.message);
+            alert("Usuário ou senha de administrador inválidos");
         });
     };
 
     return (
-        <div className="containerLogin">
-            <div className="containerLogo">
-                <img src={imgLogo} alt="logo do site" />
+        <>
+            <NavBar />
+            <div className="containerLogin">
+                <div className="containerInput">
+                    <form onSubmit={fazerLogin}>
+                        <input placeholder="E-mail de administrador" type="email" value={email} onChange={e => setEmail(e.target.value)} required></input>
+                        <input placeholder="Senha de administrador" type="password" value={password} onChange={e => setPassword(e.target.value)} required></input>
+                        <button type="submit" >Entrar</button>
+                    </form>
+                    <Link to="/">
+                        <button>Home</button>
+                    </Link>
+                </div>
             </div>
-            <div className="containerInput">
-                <form onSubmit={fazerLogin}>
-                    <input placeholder="E-mail de administrador" type="email" value={email} onChange={e => setEmail(e.target.value)} required></input>
-                    <input placeholder="Senha de administrador" type="password" value={password} onChange={e => setPassword(e.target.value)} required></input>
-                    <button type="submit" >Entrar</button>
-                </form>
-                <Link to="/">
-                    <button>Home</button>
-                </Link>
-            </div>
-        </div>
+        </>
     );
 };

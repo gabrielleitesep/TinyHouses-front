@@ -5,7 +5,9 @@ export default function NavBar() {
     return (
         <Container>
             <BoxNavBar>
-                <h1>TinyHouse</h1>
+                <Link to={`/`}>
+                    <h1>TinyHouses</h1>
+                </Link>
                 <BoxIcons>
                     <Link to={`/login`}>
                         <ion-icon name="person-outline"></ion-icon>

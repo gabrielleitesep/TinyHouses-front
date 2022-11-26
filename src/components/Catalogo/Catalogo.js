@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import NavBar from "./NavBar";
+import NavBar from "../NavBar";
 import BoxProdut from "./BoxProduct";
 
 export default function Catalogo() {

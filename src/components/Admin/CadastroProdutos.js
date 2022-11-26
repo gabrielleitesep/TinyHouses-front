@@ -1,6 +1,5 @@
 import axios from "axios";
 import styled from "styled-components";
-import imgLogo from "../../assets/House.png";
 import NavBarProdutos from "./NavBarProdutos";
 import ListaProdutos from "./ListaProdutos";
 
@@ -34,7 +33,6 @@ export default function CadastroProdutos() {
     return (
         <Container>
             <NavBarProdutos />
-            <img src={imgLogo} alt="logo do site" />
             <form onSubmit={cadastrar}>
                 <input placeholder="Título" type="text" onChange={e => body.title = e.target.value} required></input>
                 <input placeholder="Imagem" type="url" onChange={e => body.image = e.target.value} required></input>
@@ -55,13 +53,8 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-img {
-    width: 77px;
-    height: 60px;
-    padding-top: 150px;
-}
 form {
-    margin-top: 33px;
+    margin-top: 130px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -72,12 +65,13 @@ input {
     margin-bottom: 16px;
     border-radius: 7px;
     padding-left: 14px;
+    font-size: 17px;
     color: black;
 }
-::placeholder {
+input::placeholder {
     font-family: 'Roboto', sans - serif;
     font-weight: 400;
-    font-size: 15px;
+    font-size: 17px;
     margin-left: 55px;
     color: grey;
 }
