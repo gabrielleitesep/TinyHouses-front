@@ -2,37 +2,72 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import NavBar from "../components/NavBar";
+import axios from "axios";
+import { useEffect } from "react";
+import { useContext } from "react";
+import UseContext from "../contexts/useContext";
+import cartContext from "../contexts/cartContext";
 
-export default function Catalogo() {
+export default function Carrinho() {
 
     const [cart, setCart] = useState([])
+    const {token} = useContext(UseContext)
+    const {setCartData} = useContext(cartContext)
 
-    function removeProduct(product){
-        const cartArray = cart.filter((p) => p.id !== product.id)
-        setCart(cartArray)
-    }
+        useEffect(() => {
 
-    return (
-        <Container>
-            <NavBar/>
+            const promise = axios.get("http://localhost:5000/carrinho");
+            promise.then((res) => setCart(res.data));
+            promise.catch((err) => console.log(err.response.data));
+    
+        }, []);
+    
+    
+
+        async function deleteProduct() {
+
+            const config = {headers: { "Authorization": `Bearer ${token}` }};
+
+                try {
+                    await axios.delete("http://localhost:5000/carrinho", config);
+                } catch (err) {
+                    console.log(err.response.data);
+                }
+            }
+        
+
+
+    if (cart === null) {
+        return (
             <BoxProducts>
-                <Product>
-                    <h1>Casa pré-fabricada de madeira Eco Lodge 18,14 m2</h1>
-                    <img src={"https://st3.idealista.pt/news/arquivos/styles/fullwidth_xl/public/2022-01/eco_lodge.png?VersionId=WS0sBiDHZwkpVTEQhdw_LksF0KZaxr0E&itok=rGDtbaYK"} alt={"casa"} />
-                    <p>R$60.000,00</p>
-                <BoxIcons>
-                <ion-icon name="trash"></ion-icon>
-                </BoxIcons>
-                </Product>
-                <Link to={`/`}>
-                    <Button>Continuar comprando</Button>
-                </Link>
-                <Link to={`/finalizar`}>
-                    <Button>Finalizar compra</Button>
-                </Link>
+                <h1>Seu carrinho está vazio!</h1>
             </BoxProducts>
-        </Container>
-    )
+        );
+    } else {
+        return (
+            <Container>
+                <NavBar/>
+                <BoxProducts>
+                    <Product>
+                    {cart.map((c) => <div>
+                        <h1>{c.title}</h1>
+                        <img>{c.image}</img>
+                        <p>{c.price}</p>
+                         </div>)}
+                    <BoxIcons>
+                    <ion-icon name="trash" onClick={() => deleteProduct()}></ion-icon>
+                    </BoxIcons>
+                    </Product>
+                    <Link to={`/`}>
+                        <Button>Continuar comprando</Button>
+                    </Link>
+                    <Link to={`/finalizar`}>
+                        <Button>Finalizar compra</Button>
+                    </Link>
+                </BoxProducts>
+            </Container>
+        )
+    }
 };
 
 const Container = styled.div`

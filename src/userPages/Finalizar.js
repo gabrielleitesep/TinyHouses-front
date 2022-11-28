@@ -1,7 +1,28 @@
+import { useState } from "react";
 import styled from "styled-components";
 import NavBar from "../components/NavBar";
+import { useEffect } from "react";
+import axios from "axios";
 
 export default function Finalizar() {
+
+    const [pedido, setPedido] = useState([])
+
+    useEffect(() => {
+
+        const promise = axios.get("http://localhost:5000/carrinho");
+        promise.then((res) => setPedido(res.data));
+        promise.catch((err) => console.log(err.data));
+    
+    }, []);
+    
+    if (pedido.length === 0) {
+        return (
+            <BoxProducts>
+                <img src="https://miro.medium.com/max/1400/1*CsJ05WEGfunYMLGfsT2sXA.gif" alt={'Carregando...'} />
+            </BoxProducts>
+        );
+    };
     return (
         <Container>
             <NavBar />
@@ -9,14 +30,11 @@ export default function Finalizar() {
                 <h1>Obrigada por comprar com a gente!</h1>
                 <h2>Dados da compra</h2>
                 <PurchasedItem>
-                    <p>Casa pré-fabricada de madeira Eco Lodge 18,14 m2</p>
-                    <p>1 unidade</p>
-                    <span>R$60.000,00</span>
-                </PurchasedItem>
-                <PurchasedItem>
-                    <p>Casa pré-fabricada de madeira Eco Lodge 18,14 m2</p>
-                    <p>1 unidade</p>
-                    <span>R$60.000,00</span>
+                    {pedido.map((c) => <div>
+                        <p>{c.title}</p>
+                        <p>1 unidade</p>
+                        <span>{c.price}</span>
+                         </div>)}
                 </PurchasedItem>
                 <h2>Total: R$120.000,00</h2>
                 <h2>Dados do comprador</h2>
@@ -70,4 +88,11 @@ const PurchasedItem = styled.div`
     border-radius: 7px;
     margin: 5px auto;
     padding: 10px;
+`
+const BoxProducts = styled.div`
+    margin-top: 100px;
+    width: 90%;
+    height: auto;
+    min-height: 100vh;
+    margin-bottom: 100px;
 `

@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import UseContext from "../contexts/useContext";
 import axios from "axios";
+import imgLogo from "../assets/Logo.png"
 
 export default function NavBar() {
 
@@ -27,7 +28,7 @@ export default function NavBar() {
         <Container>
             <BoxNavBar>
                 <Link to={`/`}>
-                    <h1>TinyHouses</h1>
+                <img src={imgLogo} alt={"logo do site"} />
                 </Link>
                 <BoxIcons>                
                     <Link to={`/carrinho`}>
@@ -60,6 +61,11 @@ h1 {
     font-family: 'Roboto', sans-serif;
     font-size: 30px;
     margin: 20px;
+}
+img {
+    width: 100px;
+    height: 100px;
+    padding-left: 25px;
 }
 `
 const BoxIcons = styled.div`
