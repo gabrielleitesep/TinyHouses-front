@@ -12,12 +12,13 @@ export default function App() {
 
     const [dados, setDados] = useState("");
     const [token, setToken] = useState(null);
+    const [userType, setUserType] = useState(null);
     const [productsList, setProductsList] = useState(null);
 
     return (
         <>
             <BrowserRouter>
-                <UseContext.Provider value={{ dados, setDados, token, setToken, productsList, setProductsList }}>
+                <UseContext.Provider value={{ dados, setDados, token, setToken, userType, setUserType, productsList, setProductsList }}>
                     <Routes>
                         <Route path='/' element={<Catalogo />} />
                         <Route path='/login' element={<Login />} />

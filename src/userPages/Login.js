@@ -9,7 +9,7 @@ export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
-    const { setToken } = useContext(UseContext);
+    const { setToken, setUserType } = useContext(UseContext);
 
     function fazerLogin(e) {
         e.preventDefault();
@@ -23,6 +23,7 @@ export default function Login() {
 
         promise.then(res => {
             setToken(res.data.token);
+            setUserType(res.data.userType);
             navigate("/");
         });
 

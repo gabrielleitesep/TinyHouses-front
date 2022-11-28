@@ -1,26 +1,12 @@
-import axios from "axios";
 import styled from "styled-components";
-import { useState, useEffect } from "react";
+import { useContext } from "react";
+import UseContext from "../contexts/useContext";
 
 export default function ListaProdutos() {
 
-    const [lista, setLista] = useState(null);
-    const config = {
-        // headers: { Authorization: `Bearer ${token}` }
-    };
+    const { productsList } = useContext(UseContext);
 
-    useEffect(() => {
-        const promise = axios.get("http://localhost:5000/get-events", config)
-
-        promise.then((res) => {
-            setLista(res.data);
-        });
-        promise.catch((err) => {
-            console.log(err.response.data);
-        });
-    }, []);
-
-    if (lista === null) {
+    if (productsList === null) {
         return (
             <BoxList>
                 <img src="https://miro.medium.com/max/1400/1*CsJ05WEGfunYMLGfsT2sXA.gif" alt={'Carregando...'} />
@@ -31,7 +17,7 @@ export default function ListaProdutos() {
     return (
         <BoxList>
             <h1>Lista de Produtos Cadastrados</h1>
-            {lista.map((l) =>
+            {productsList.map((l) =>
                 <p key={l._id}>{l.title}</p>
             )}
         </BoxList>
@@ -40,12 +26,24 @@ export default function ListaProdutos() {
 
 const BoxList = styled.div`
     width: 100vw;
-    margin-bottom: 33px;
+    margin-bottom: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-family: 'Roboto', sans-serif;
 img {
     width: 300px;
     height: auto;
+}
+h1 {
+    font-weight: 700;
+    margin: 15px;
+}
+p {
+    font-weight: 400;
+    font-size: 20;
+    text-align: center;
+    word-break: break;
+    margin: 5px;
 }
 `

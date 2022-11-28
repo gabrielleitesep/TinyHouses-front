@@ -2,8 +2,12 @@ import axios from "axios";
 import styled from "styled-components";
 import NavBar from "../components/NavBar";
 import ListaProdutos from "./ListaProdutos";
+import { useContext } from "react";
+import UseContext from "../contexts/useContext";
 
 export default function CadastroProdutos() {
+
+    const {token} = useContext(UseContext);
 
     const body = {
         title: "",
@@ -15,17 +19,21 @@ export default function CadastroProdutos() {
         price: "",
     };
 
+    const config = {
+        headers: { "Authorization": `Bearer ${token}` }
+    };
+
     function cadastrar(e) {
-        e.preventDefault()
+        e.preventDefault();
 
-        const promise = axios.post("http://localhost:5000/cadastro-produtos", body);
+        const promise = axios.post("http://localhost:5000/product-registration", body, config);
 
-        promise.then(res => {
+        promise.then((res) => {
             console.log(res.data);
         });
 
-        promise.catch(err => {
-            console.log(err.response.data.message);
+        promise.catch((err) => {
+            console.log(err);
             alert("Os campos devem ser preenchidos corretamente!");
         });
     };
